@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Project Document Register</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- sign-in -->
+<form class="login" id="login" hidden>
+  <h1 id="loginTitle">Project Document Register</h1>
+  <p>Sign in with the email and password your administrator gave you.</p>
+  <div class="field"><label for="li-email">Email</label><input id="li-email" type="email" autocomplete="username" required></div>
+  <div class="field"><label for="li-pass">Password</label><input id="li-pass" type="password" autocomplete="current-password" required></div>
+  <div class="err" id="loginErr" hidden></div>
+  <button class="btn primary" type="submit" id="loginBtn" style="justify-content:center">Sign in</button>
+</form>
+
+<div class="notice" id="setup" hidden style="max-width:640px;margin:8vh auto 0">
+  This site isn't connected to its database yet. Open <code>config.js</code> and paste your Supabase project URL and anon key (see README.md).
+</div>
+
+<!-- app -->
+<div class="wrap" id="app" hidden>
+  <header class="top">
+    <div class="brand">
+      <h1 id="brandTitle">Project Document Register</h1>
+      <p>Every project's requirements, designs, test reports and release notes in one numbered register.</p>
+    </div>
+    <div class="me"><span id="meEmail"></span><button class="btn small" id="refreshBtn" type="button">Refresh</button><button class="btn small" id="signOutBtn" type="button">Sign out</button></div>
+  </header>
+
+  <div id="notice" class="notice" hidden></div>
+
+  <div class="grid">
+    <aside class="side" aria-label="Projects">
+      <div class="side-head">
+        <span class="label">Projects</span>
+        <button class="icon-btn" id="newProjectBtn" title="New project" aria-label="New project" type="button">+</button>
+      </div>
+      <ul class="plist" id="plist"></ul>
+      <div class="side-empty" id="sideEmpty">No projects yet.</div>
+    </aside>
+
+    <main class="main" id="main">
+      <div class="empty" id="welcome">
+        <h3>Start your first project</h3>
+        <p>Create a project, then add documents into folders such as Requirements, Design and Testing. Each document gets a register number like <code>CRM-REQ-001</code>.</p>
+        <button class="btn primary" id="welcomeBtn" type="button">Create a project</button>
+      </div>
+    </main>
+  </div>
+</div>
+
+<div class="overlay" id="overlay" hidden><div class="modal" id="modal" role="dialog" aria-modal="true"></div></div>
+<div class="toast" id="toast" hidden></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
